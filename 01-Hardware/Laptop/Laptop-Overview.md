@@ -1,0 +1,11 @@
+Kiến thức tổng quan laptop:
+- CPU
+- RAM
+- SSD
+- Battery
+- Display
+- Keyboard
+- Touchpad
+- Wi-Fi
+- Cooling
+- Adapter
