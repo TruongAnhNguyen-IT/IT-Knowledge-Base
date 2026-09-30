@@ -1,0 +1,3 @@
+HDD
+SSD SATA
+SSD NVMe
