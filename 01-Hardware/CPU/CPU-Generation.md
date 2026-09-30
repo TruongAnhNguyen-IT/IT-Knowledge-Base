@@ -1,80 +1,222 @@
-# CPU Generation Guide / Hướng Dẫn Về Thế Hệ CPU
+# CPU Generation / Thế hệ CPU
+
+## 1. What is a CPU Generation? / Thế hệ CPU là gì?
+
+**Tiếng Việt**
+
+CPU Generation là cách phân loại các thế hệ sản phẩm CPU được phát triển theo từng kiến trúc, quy trình sản xuất hoặc nền tảng khác nhau.
+
+Mỗi thế hệ có thể có những thay đổi về:
+
+- Architecture
+- Manufacturing process
+- Performance
+- Power efficiency
+- Socket
+- Chipset
+- Memory support
+- PCIe support
+- Integrated graphics
+
+**English**
+
+A CPU generation is a way of grouping processor products based on their architecture, manufacturing process, platform, or product release generation.
+
+Each generation may introduce changes to:
+
+- Architecture
+- Manufacturing process
+- Performance
+- Power efficiency
+- Socket
+- Chipset
+- Memory support
+- PCIe support
+- Integrated graphics
 
 ---
 
-## 1. Introduction / Giới Thiệu
-* **EN:** A CPU Generation represents a specific technological cycle in processor design, featuring updates in architecture, microarchitecture, socket compatibility, manufacturing process (nanometers), and instruction sets.
-* **VI:** Thế hệ CPU (CPU Generation) đại diện cho một chu kỳ công nghệ trong thiết kế vi xử lý, bao gồm các cải tiến về kiến trúc, vi kiến trúc, socket (chân cắm), tiến trình sản xuất (nm), và tập lệnh xử lý.
+# 2. Intel Core Generations / Các thế hệ Intel Core
+
+| Generation | Codename | Example |
+|---|---|---|
+| 8th Gen | Coffee Lake | i5-8400 |
+| 9th Gen | Coffee Lake Refresh | i5-9400 |
+| 10th Gen | Comet Lake | i5-10400 |
+| 11th Gen | Rocket Lake | i5-11400 |
+| 12th Gen | Alder Lake | i5-12400 |
+| 13th Gen | Raptor Lake | i5-13400 |
+| 14th Gen | Raptor Lake Refresh | i5-14400 |
 
 ---
 
-## 2. Naming Conventions & Decoding / Cách Đọc Mã & Nhận Biết Thế Hệ
+# 3. Identifying Intel CPU Generation / Nhận biết thế hệ Intel
 
-### A. Intel Processors / Vi Xử Lý Intel
+Ví dụ:
 
-#### Legacy Scheme (Core i3 / i5 / i7 / i9)
-* **Example / Ví dụ:** `Intel Core i7-14700K`
-  * **Brand / Thương hiệu:** Intel Core
-  * **Modifier / Phân khúc:** i7
-  * **Generation / Thế hệ:** **14** (Thế hệ 14 - 14th Gen)
-  * **SKU / Mã sản phẩm:** 700
-  * **Suffix / Hậu tố:** K (Cho phép ép xung / Unlocked)
+```text
+Intel Core i5-10400
+```
 
-#### New Scheme (Core Ultra Series)
-* **Example / Ví dụ:** `Intel Core Ultra 7 265K`
-  * **Brand / Thương hiệu:** Intel Core Ultra
-  * **Tier / Phân cấp:** 7
-  * **Series / Thế hệ:** **Series 2** (Arrow Lake)
-  * **SKU / Mã sản phẩm:** 65
-  * **Suffix / Hậu tố:** K (Unlocked)
+Phân tích:
 
----
+```text
+i5
+↓
+Product Tier
 
-### B. AMD Processors / Vi Xử Lý AMD
+10
+↓
+10th Generation
 
-#### Desktop Scheme (Ryzen)
-* **Example / Ví dụ:** `AMD Ryzen 7 9800X3D`
-  * **Brand / Thương hiệu:** AMD Ryzen
-  * **Tier / Phân cấp:** 7
-  * **Generation / Thế hệ:** **9** (Series 9000 - Architecture Zen 5)
-  * **SKU / Mã sản phẩm:** 800
-  * **Suffix / Hậu tố:** X3D (Công nghệ bộ nhớ đệm 3D V-Cache)
+400
+↓
+Model
+```
 
----
+Ví dụ:
 
-## 3. Intel CPU Generations Overview / Tổng Quan Các Thế Hệ Intel
+```text
+Intel Core i5-12400
+```
 
-| Generation / Thế hệ | Architecture / Kiến trúc | Socket / Chân cắm | Process / Tiến trình | RAM Support / Loại RAM | Key Features / Đặc điểm chính |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Core Ultra Series 2** | Arrow Lake / Lunar Lake | LGA 1851 | TSMC N3B / N4P | DDR5 | Built-in NPU (AI), high power efficiency, no Hyper-Threading on E-cores / Tích hợp NPU AI, tối ưu điện năng. |
-| **14th Gen** | Raptor Lake Refresh | LGA 1700 | Intel 7 (10nm) | DDR4 / DDR5 | Increased clock speeds, higher E-core counts / Tăng xung nhịp, bổ sung số lượng nhân tiết kiệm điện. |
-| **13th Gen** | Raptor Lake | LGA 1700 | Intel 7 (10nm) | DDR4 / DDR5 | Improved hybrid architecture, larger L2/L3 cache / Tối ưu kiến trúc nhân hỗn hợp (P-core & E-core). |
-| **12th Gen** | Alder Lake | LGA 1700 | Intel 7 (10nm) | DDR4 / DDR5 | First performance-hybrid architecture (P+E cores), PCIe 5.0 / Thế hệ đầu tiên áp dụng kiến trúc nhân hỗn hợp. |
-| **11th Gen** | Rocket Lake | LGA 1200 | 14nm | DDR4 | Native PCIe 4.0, Xe Graphics / Hỗ trợ chuẩn PCIe 4.0 và đồ họa tích hợp Intel Xe. |
-| **10th Gen** | Comet Lake | LGA 1200 | 14nm | DDR4 | Hyper-Threading enabled across all tiers (i3 to i9) / Bổ sung Siêu phân luồng cho tất cả phân khúc. |
+```text
+i5
+↓
+Product Tier
 
----
+12
+↓
+12th Generation
 
-## 4. AMD CPU Generations Overview / Tổng Quan Các Thế Hệ AMD
-
-| Generation / Thế hệ | Architecture / Kiến trúc | Socket / Chân cắm | Process / Tiến trình | RAM Support / Loại RAM | Key Features / Đặc điểm chính |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Ryzen 9000 Series** | Zen 5 | AM5 | TSMC 4nm / 6nm | DDR5 | +16% IPC improvement, Full AVX-512 support / Cải thiện 16% hiệu suất IPC, hỗ trợ AVX-512 full-width. |
-| **Ryzen 8000 Series** | Zen 4 (Hawk Point) | AM5 | TSMC 4nm | DDR5 | APU with strong RDNA 3 graphics and XDNA NPU / Tích hợp GPU RDNA 3 mạnh mẽ và nhân NPU AI. |
-| **Ryzen 7000 Series** | Zen 4 | AM5 | TSMC 5nm / 6nm | DDR5 | Native PCIe 5.0, EXPO RAM profiles, LGA socket transition / Chuyển sang socket LGA AM5, hỗ trợ DDR5. |
-| **Ryzen 5000 Series** | Zen 3 | AM4 | TSMC 7nm | DDR4 | Unified L3 cache, introduced 3D V-Cache technology / Unified L3 Cache giúp tăng mạnh hiệu năng chơi game. |
-| **Ryzen 3000 Series** | Zen 2 | AM4 | TSMC 7nm | DDR4 | Chiplet design architecture, PCIe 4.0 support / Tách rời thiết kế Chiplet, hỗ trợ PCIe 4.0. |
+400
+↓
+Model
+```
 
 ---
 
-## 5. Notes & Best Practices / Lưu Ý Quan Trọng
+# 4. Intel Core Product Tiers / Phân khúc Intel Core
 
-### EN:
-1. **Socket Compatibility:** A newer CPU generation often requires a motherboard with a matching socket (e.g., Intel LGA1700 vs LGA1851, AMD AM4 vs AM5).
-2. **BIOS Updates:** Using a newer generation CPU on an older compatible motherboard chipset almost always requires updating the BIOS beforehand.
-3. **Memory Standard:** Pay attention to RAM type requirements (DDR4 vs DDR5) when matching CPU generations with motherboard platforms.
+### Intel Core i3
 
-### VI:
-1. **Độ tương thích Socket:** Thế hệ CPU mới hơn thường đi kèm với socket mới (Ví dụ: Intel LGA1700 chuyển sang LGA1851, AMD AM4 chuyển sang AM5).
-2. **Cập nhật BIOS:** Khi lắp CPU thế hệ mới lên các bo mạch chủ dòng cũ có hỗ trợ tương thích, bạn bắt buộc phải cập nhật BIOS trước khi lắp đặt.
-3. **Chuẩn RAM:** Chú ý chuẩn RAM tương thích (DDR4 hay DDR5) khi lựa chọn thế hệ CPU và mainboard tương ứng.
+Entry-level / Phân khúc phổ thông.
+
+### Intel Core i5
+
+Mainstream / Phân khúc phổ biến.
+
+### Intel Core i7
+
+Higher-performance / Hiệu năng cao hơn.
+
+### Intel Core i9
+
+High-end / Phân khúc cao cấp.
+
+---
+
+# 5. Intel CPU Suffixes / Hậu tố Intel
+
+| Suffix | Meaning | Ý nghĩa |
+|---|---|---|
+| K | Unlocked | Có thể ép xung |
+| F | No Integrated Graphics | Không có iGPU |
+| KF | Unlocked + No iGPU | Mở khóa + không iGPU |
+| T | Lower-power desktop | Desktop tiết kiệm điện hơn |
+| H | High-performance mobile | Laptop hiệu năng cao |
+| HX | High-performance mobile | Laptop hiệu năng rất cao |
+| U | Mobile low-power | Laptop tiết kiệm điện |
+
+> Suffix meaning can vary by product generation and platform. Always check the official CPU specification.
+
+---
+
+# 6. AMD Ryzen Generations / Các thế hệ AMD Ryzen
+
+| Generation | Series | Example |
+|---|---|---|
+| 1st Gen | Ryzen 1000 | Ryzen 5 1600 |
+| 2nd Gen | Ryzen 2000 | Ryzen 5 2600 |
+| 3rd Gen | Ryzen 3000 | Ryzen 5 3600 |
+| 4th Gen | Ryzen 4000 | Ryzen 5 4600G |
+| 5th Gen | Ryzen 5000 | Ryzen 5 5600 |
+| 6th Gen | Ryzen 6000 | Ryzen 5 6600 |
+| 7th Gen | Ryzen 7000 | Ryzen 5 7600 |
+| 8th Gen | Ryzen 8000 | Ryzen 7 8700G |
+
+---
+
+# 7. AMD Ryzen Product Tiers / Phân khúc AMD Ryzen
+
+- Ryzen 3 — Entry-level
+- Ryzen 5 — Mainstream
+- Ryzen 7 — High-performance
+- Ryzen 9 — High-end
+- Threadripper — Workstation
+- EPYC — Server
+
+---
+
+# 8. AMD CPU Suffixes / Hậu tố AMD
+
+| Suffix | Meaning | Ý nghĩa |
+|---|---|---|
+| X | Higher-performance model | Model hiệu năng cao |
+| G | Integrated graphics | Có GPU tích hợp |
+| X3D | 3D V-Cache | Có 3D V-Cache |
+| U | Mobile | Laptop tiết kiệm điện |
+| H | Mobile high-performance | Laptop hiệu năng cao |
+| HX | Mobile high-performance | Laptop hiệu năng rất cao |
+
+---
+
+# 9. Why CPU Generation Matters? / Tại sao thế hệ CPU quan trọng?
+
+**Tiếng Việt**
+
+Khi nâng cấp máy tính, không nên chỉ nhìn tên i5 hoặc Ryzen 5.
+
+Cần kiểm tra:
+
+1. CPU generation
+2. Socket
+3. Chipset
+4. BIOS
+5. RAM
+6. PCIe
+7. Motherboard support list
+
+**English**
+
+When upgrading a computer, do not compare CPUs only by the i5 or Ryzen 5 label.
+
+Check:
+
+1. CPU generation
+2. Socket
+3. Chipset
+4. BIOS
+5. RAM
+6. PCIe
+7. Motherboard CPU support list
+
+---
+
+# 10. Example / Ví dụ
+
+```text
+Intel Core i5-10400
+```
+
+Thông tin:
+
+```text
+Family      : Core i5
+Generation  : 10th Gen
+Codename    : Comet Lake
+Socket      : LGA1200
+Memory      : DDR4
+```
+
+Khi nâng cấp từ i5-10400, cần kiểm tra motherboard hiện tại trước khi chọn CPU mới.
