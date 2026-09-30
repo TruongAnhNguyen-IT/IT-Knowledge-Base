@@ -1,220 +1,503 @@
 # Mainboard
 
-## Bo mạch chủ / Motherboard
+> Motherboard / Mainboard Knowledge Base
+
+> Tài liệu kiến thức về Mainboard dành cho IT Support, Hardware Technician, System Administrator và người học Computer Networks.
 
 ---
 
-## 🇻🇳 Tổng quan
+# 🇻🇳 Tiếng Việt
 
-**Mainboard (Bo mạch chủ)** là bảng mạch chính của máy tính, có nhiệm vụ kết nối và điều phối hoạt động giữa CPU, RAM, GPU, Storage, PSU và các thiết bị ngoại vi.
+## 1. Giới thiệu
 
-Mainboard quyết định phần lớn khả năng tương thích và khả năng mở rộng của hệ thống.
-
-**English:**
-
-A **mainboard (motherboard)** is the primary circuit board of a computer. It connects and enables communication between the CPU, RAM, GPU, storage devices, PSU, and peripheral devices.
-
-The motherboard plays an important role in determining system compatibility, connectivity, and upgradeability.
-
----
-
-# 📚 Contents
-
-| File | Nội dung / Content |
-|---|---|
-| [BIOS-UEFI.md](BIOS-UEFI.md) | BIOS/UEFI, boot process, configuration and firmware |
-| [Mainboard-Compatibility.md](Mainboard-Compatibility.md) | CPU, RAM, GPU, storage and PSU compatibility |
-| [Mainboard-Overview.md](Mainboard-Overview.md) | Mainboard architecture and components |
-| [Mainboard-Ports.md](Mainboard-Ports.md) | Internal headers and external I/O ports |
-| [Mainboard-Testing.md](Mainboard-Testing.md) | Mainboard inspection and testing procedures |
-| [Mainboard-Troubleshooting.md](Mainboard-Troubleshooting.md) | Mainboard troubleshooting and fault diagnosis |
-
----
-
-# 🎯 Learning Objectives
-
-## 🇻🇳 Mục tiêu học tập
-
-Sau khi hoàn thành phần này, có thể:
-
-- Hiểu cấu trúc của mainboard.
-- Nhận biết các thành phần chính trên mainboard.
-- Hiểu socket CPU và chipset.
-- Hiểu khe RAM.
-- Hiểu PCIe và các khe mở rộng.
-- Hiểu SATA và M.2.
-- Nhận biết các cổng I/O.
-- Hiểu BIOS/UEFI.
-- Kiểm tra khả năng tương thích phần cứng.
-- Kiểm tra và chẩn đoán lỗi mainboard.
-- Thực hiện quy trình troubleshooting có hệ thống.
-- Ghi nhận kết quả kiểm tra vào báo cáo kỹ thuật.
-
-## English
-
-After completing this section, you should be able to:
-
-- Understand motherboard architecture.
-- Identify major motherboard components.
-- Understand CPU sockets and chipsets.
-- Understand RAM slots.
-- Understand PCIe expansion slots.
-- Understand SATA and M.2 interfaces.
-- Identify external I/O ports.
-- Understand BIOS/UEFI.
-- Verify hardware compatibility.
-- Test and troubleshoot motherboard problems.
-- Follow a systematic troubleshooting process.
-- Document technical test results.
-
----
-
-# 🧩 Mainboard Components
-
-| Component | Tiếng Việt | Chức năng |
-|---|---|---|
-| CPU Socket | Socket CPU | Kết nối CPU với mainboard |
-| Chipset | Chipset | Điều phối nhiều chức năng I/O |
-| DIMM Slots | Khe RAM | Lắp RAM |
-| PCIe Slots | Khe PCI Express | GPU và card mở rộng |
-| M.2 Slots | Khe M.2 | SSD M.2 và một số thiết bị khác |
-| SATA Ports | Cổng SATA | Kết nối HDD/SSD SATA |
-| VRM | Mạch cấp nguồn CPU | Cung cấp điện áp ổn định cho CPU |
-| BIOS/UEFI | Firmware | Khởi tạo phần cứng và boot hệ điều hành |
-| CMOS Battery | Pin CMOS | Duy trì một số thiết lập firmware/clock |
-| 24-pin ATX | Nguồn mainboard | Cấp nguồn chính |
-| CPU Power | EPS 4/8-pin hoặc tương ứng | Cấp nguồn cho CPU |
-| Audio | Âm thanh | Xử lý âm thanh |
-| LAN | Mạng | Kết nối Ethernet |
-| Rear I/O | I/O phía sau | Kết nối thiết bị bên ngoài |
-
----
-
-# 🔧 Common Mainboard Tasks
-
-## 🇻🇳
-
-Các công việc thường gặp:
-
-- Lắp ráp máy tính.
-- Thay mainboard.
-- Nâng cấp CPU.
-- Nâng cấp RAM.
-- Lắp SSD.
-- Lắp GPU.
-- Cập nhật BIOS.
-- Reset BIOS/CMOS.
-- Kiểm tra nguồn.
-- Kiểm tra POST.
-- Kiểm tra RAM.
-- Kiểm tra CPU.
-- Kiểm tra khe PCIe.
-- Kiểm tra USB.
-- Kiểm tra LAN.
-- Kiểm tra Audio.
-- Chẩn đoán lỗi không POST.
-- Chẩn đoán lỗi không nhận thiết bị.
-
-## English
-
-Common motherboard tasks include:
-
-- PC assembly.
-- Motherboard replacement.
-- CPU upgrade.
-- RAM upgrade.
-- SSD installation.
-- GPU installation.
-- BIOS update.
-- BIOS/CMOS reset.
-- Power testing.
-- POST testing.
-- RAM testing.
-- CPU testing.
-- PCIe slot testing.
-- USB testing.
-- LAN testing.
-- Audio testing.
-- No-POST troubleshooting.
-- Hardware detection troubleshooting.
-
----
-
-# 📝 Documentation Template
+Mainboard là thành phần trung tâm kết nối và giao tiếp giữa:
 
 ```text
-Device:
-Motherboard:
-Manufacturer:
-Model:
-Revision:
-BIOS Version:
+CPU
+│
+├── RAM
+├── GPU
+├── Storage
+├── PCIe Devices
+├── USB Devices
+├── Network
+├── Audio
+└── Other Peripherals
+```
 
-CPU:
-RAM:
-GPU:
-Storage:
-PSU:
+Hiểu mainboard giúp IT Technician có khả năng:
 
-Physical Condition:
+- Lắp ráp máy tính.
+- Kiểm tra compatibility.
+- Chẩn đoán lỗi hardware.
+- Kiểm tra POST.
+- Xử lý lỗi BIOS/UEFI.
+- Kiểm tra RAM.
+- Kiểm tra CPU.
+- Kiểm tra storage.
+- Kiểm tra I/O.
+- Troubleshooting PC.
 
-POST Result:
+---
 
-BIOS/UEFI Result:
+# 🇬🇧 English
 
-RAM Test:
+A motherboard is the central platform that connects and communicates with:
 
-Storage Test:
+```text
+CPU
+│
+├── RAM
+├── GPU
+├── Storage
+├── PCIe Devices
+├── USB Devices
+├── Network
+├── Audio
+└── Other Peripherals
+```
 
-PCIe Test:
+Understanding motherboards helps IT technicians with:
 
-USB Test:
+- PC assembly.
+- Hardware compatibility.
+- Hardware diagnostics.
+- POST troubleshooting.
+- BIOS/UEFI troubleshooting.
+- Memory testing.
+- CPU testing.
+- Storage troubleshooting.
+- I/O testing.
 
-LAN Test:
+---
 
-Audio Test:
+# 2. Files
 
-Temperature:
+| File | 🇻🇳 Nội dung | 🇬🇧 Content |
+|---|---|---|
+| `BIOS-UEFI.md` | BIOS và UEFI | BIOS and UEFI |
+| `Mainboard-Compatibility.md` | Compatibility | Hardware compatibility |
+| `Mainboard-Overview.md` | Tổng quan Mainboard | Motherboard overview |
+| `Mainboard-Ports.md` | Cổng và connector | Ports and connectors |
+| `Mainboard-Testing.md` | Kiểm tra Mainboard | Motherboard testing |
+| `Mainboard-Troubleshooting.md` | Xử lý lỗi | Troubleshooting |
 
-Detected Problems:
+---
 
-Troubleshooting Actions:
+# 3. Mainboard Architecture
 
-Final Result:
-
-Technician Notes:
+```text
+                         ┌──────────────┐
+                         │     CPU      │
+                         └──────┬───────┘
+                                │
+                    CPU Memory / PCIe
+                                │
+            ┌───────────────────┼───────────────────┐
+            │                   │                   │
+          RAM                  GPU                NVMe
+            │                   │                   │
+            └───────────────────┼───────────────────┘
+                                │
+                         ┌──────▼──────┐
+                         │  Chipset    │
+                         └──────┬──────┘
+                                │
+           ┌────────────────────┼────────────────────┐
+           │                    │                    │
+         SATA                  USB                 LAN
+           │                    │                    │
+         Audio              Front I/O           Network
 ```
 
 ---
 
-# ⚠️ Safety
+# 4. Main Components
 
-## 🇻🇳
+| Component | Function |
+|---|---|
+| CPU Socket | Kết nối CPU |
+| Chipset | Quản lý nhiều I/O |
+| DIMM Slots | Kết nối RAM |
+| PCIe Slots | GPU và expansion cards |
+| M.2 Slots | SSD |
+| SATA Ports | SATA storage |
+| VRM | Cung cấp điện cho CPU |
+| BIOS/UEFI | Firmware |
+| CMOS Battery | RTC / configuration support |
+| ATX Connector | Main power |
+| EPS Connector | CPU power |
+| Fan Headers | Cooling |
+| USB Headers | Front USB |
+| Audio Header | Front audio |
+| Network Controller | Ethernet |
 
-Khi làm việc với mainboard:
+---
 
-- Tắt máy hoàn toàn.
-- Ngắt nguồn AC.
-- Rút dây nguồn.
-- Không thao tác khi hệ thống đang cấp điện nếu không cần thiết.
-- Sử dụng biện pháp chống tĩnh điện.
-- Không chạm tay trực tiếp vào chân socket CPU.
-- Không làm cong socket CPU.
-- Không ép linh kiện vào khe cắm.
-- Kiểm tra đúng chiều trước khi lắp.
-- Kiểm tra tài liệu của nhà sản xuất trước khi thay đổi phần cứng.
+# 5. Important Concepts
 
-## English
+## 🇻🇳 Tiếng Việt
 
-When working with a motherboard:
+Khi học Mainboard cần nắm:
 
-- Shut down the computer completely.
-- Disconnect AC power.
-- Unplug the power cable.
-- Avoid working on powered hardware unless required for testing.
-- Use appropriate ESD protection.
-- Do not touch CPU socket contacts directly.
-- Do not bend CPU socket pins.
-- Do not force components into slots.
-- Verify orientation before installation.
-- Check manufacturer documentation before hardware modifications.
+```text
+Socket
+Chipset
+VRM
+DIMM
+PCIe
+M.2
+SATA
+BIOS
+UEFI
+POST
+Form Factor
+QVL
+PCIe Lane
+I/O
+Power Delivery
+```
+
+## 🇬🇧 English
+
+Important motherboard concepts include:
+
+```text
+Socket
+Chipset
+VRM
+DIMM
+PCIe
+M.2
+SATA
+BIOS
+UEFI
+POST
+Form Factor
+QVL
+PCIe Lane
+I/O
+Power Delivery
+```
+
+---
+
+# 6. Troubleshooting Workflow
+
+```text
+Identify
+   ↓
+Inspect
+   ↓
+Power
+   ↓
+POST
+   ↓
+BIOS
+   ↓
+Hardware Detection
+   ↓
+Operating System
+   ↓
+Device Testing
+   ↓
+Stress / Stability
+   ↓
+Document
+```
+
+---
+
+# 7. Mainboard Checklist
+
+```text
+[ ] Identify motherboard model
+[ ] Identify revision
+[ ] Check BIOS version
+[ ] Check CPU compatibility
+[ ] Check RAM compatibility
+[ ] Check GPU compatibility
+[ ] Check storage compatibility
+[ ] Check PSU requirements
+[ ] Check case compatibility
+[ ] Inspect motherboard
+[ ] Test POST
+[ ] Test RAM
+[ ] Test CPU
+[ ] Test GPU
+[ ] Test storage
+[ ] Test USB
+[ ] Test Ethernet
+[ ] Test Audio
+[ ] Test PCIe
+[ ] Test stability
+[ ] Document results
+```
+
+---
+
+# 8. Documentation Standard
+
+Mỗi hardware case nên ghi:
+
+```text
+Device
+Model
+Revision
+BIOS
+CPU
+RAM
+GPU
+Storage
+PSU
+Symptoms
+Environment
+Tests
+Results
+Root Cause
+Solution
+Verification
+Notes
+```
+
+---
+
+# 9. Knowledge vs Work Log
+
+## 🇻🇳 Tiếng Việt
+
+`IT-Knowledge-Base` chứa:
+
+- Kiến thức tổng quát.
+- Nguyên lý.
+- Quy trình.
+- Checklist.
+- Troubleshooting methodology.
+- Technical references.
+
+`IT-Work-Log` chứa:
+
+- Case thực tế.
+- Thiết bị thực tế.
+- Lỗi thực tế.
+- Cách xử lý.
+- Kết quả.
+- Hình ảnh nếu cần.
+
+Ví dụ:
+
+```text
+IT-Knowledge-Base
+└── Mainboard
+    └── Mainboard-Troubleshooting.md
+
+IT-Work-Log
+└── 01-Hardware
+    └── Mainboard
+        └── 2026
+            └── ASUS-B760-No-POST.md
+```
+
+## 🇬🇧 English
+
+`IT-Knowledge-Base` contains:
+
+- General knowledge.
+- Technical concepts.
+- Procedures.
+- Checklists.
+- Troubleshooting methodology.
+- Technical references.
+
+`IT-Work-Log` contains:
+
+- Real-world cases.
+- Real devices.
+- Actual symptoms.
+- Troubleshooting steps.
+- Results.
+- Supporting images when needed.
+
+---
+
+# 10. Recommended Learning Path
+
+```text
+01. Mainboard Overview
+        ↓
+02. Mainboard Ports
+        ↓
+03. BIOS / UEFI
+        ↓
+04. Compatibility
+        ↓
+05. Testing
+        ↓
+06. Troubleshooting
+        ↓
+07. Real-world Work Logs
+```
+
+---
+
+# 11. Learning Goals
+
+## 🇻🇳 Tiếng Việt
+
+Sau khi hoàn thành phần Mainboard, mục tiêu là có thể:
+
+- Đọc thông số motherboard.
+- Xác định socket.
+- Xác định chipset.
+- Kiểm tra CPU compatibility.
+- Kiểm tra RAM compatibility.
+- Hiểu PCIe.
+- Hiểu M.2.
+- Hiểu SATA.
+- Cấu hình BIOS.
+- Thực hiện POST testing.
+- Kiểm tra I/O.
+- Phân tích lỗi no POST.
+- Phân tích lỗi no display.
+- Phân tích lỗi RAM.
+- Phân tích lỗi storage.
+- Phân tích lỗi USB/network/audio.
+
+## 🇬🇧 English
+
+After completing this section, you should be able to:
+
+- Read motherboard specifications.
+- Identify CPU sockets.
+- Identify chipsets.
+- Check CPU compatibility.
+- Check memory compatibility.
+- Understand PCIe.
+- Understand M.2.
+- Understand SATA.
+- Configure BIOS/UEFI.
+- Perform POST testing.
+- Test motherboard I/O.
+- Troubleshoot no-POST problems.
+- Troubleshoot display problems.
+- Troubleshoot memory problems.
+- Troubleshoot storage problems.
+- Troubleshoot USB/network/audio issues.
+
+---
+
+# 12. Mainboard Knowledge Map
+
+```text
+Mainboard
+│
+├── Overview
+│   ├── Socket
+│   ├── Chipset
+│   ├── VRM
+│   ├── DIMM
+│   ├── PCIe
+│   ├── M.2
+│   └── SATA
+│
+├── BIOS / UEFI
+│   ├── POST
+│   ├── Boot
+│   ├── Secure Boot
+│   ├── TPM
+│   ├── Virtualization
+│   └── BIOS Update
+│
+├── Compatibility
+│   ├── CPU
+│   ├── RAM
+│   ├── GPU
+│   ├── Storage
+│   ├── PSU
+│   └── Case
+│
+├── Ports
+│   ├── USB
+│   ├── Display
+│   ├── Ethernet
+│   ├── Audio
+│   ├── SATA
+│   └── Internal Headers
+│
+├── Testing
+│   ├── POST
+│   ├── RAM
+│   ├── CPU
+│   ├── Storage
+│   ├── I/O
+│   └── Stability
+│
+└── Troubleshooting
+    ├── No Power
+    ├── No POST
+    ├── No Display
+    ├── RAM
+    ├── Storage
+    ├── USB
+    ├── Network
+    └── Audio
+```
+
+---
+
+# 13. Important Notes
+
+## 🇻🇳 Tiếng Việt
+
+Thông số và tính năng có thể khác nhau giữa từng motherboard.
+
+Không nên áp dụng một thông tin của một model cho tất cả motherboard.
+
+Luôn kiểm tra:
+
+- Official specifications.
+- User manual.
+- CPU Support List.
+- Memory QVL.
+- BIOS release notes.
+- Motherboard revision.
+
+## 🇬🇧 English
+
+Specifications and features vary between motherboard models.
+
+Do not assume that a feature on one motherboard exists on every motherboard.
+
+Always verify:
+
+- Official specifications.
+- User manual.
+- CPU support list.
+- Memory QVL.
+- BIOS release notes.
+- Board revision.
+
+---
+
+# 14. Related Knowledge
+
+```text
+../CPU/
+../RAM/
+../SSD-HDD/
+../VGA/
+../PSU/
+../PC/
+```
+
+---
+
+# 15. Final Principle
+
+## 🇻🇳 Tiếng Việt
+
+> **Không chỉ học cách lắp Mainboard. Hãy học cách đọc, kiểm tra, chẩn đoán và giải thích Mainboard.**
+
+## 🇬🇧 English
+
+> **Do not only learn how to install a motherboard. Learn how to read, test, troubleshoot and explain it.**
