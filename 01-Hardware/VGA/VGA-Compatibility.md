@@ -1,0 +1,11 @@
+VGA
+↓
+Mainboard
+↓
+PCIe
+↓
+PSU
+↓
+Case
+↓
+Monitor
