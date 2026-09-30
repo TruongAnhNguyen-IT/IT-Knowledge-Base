@@ -1,0 +1,11 @@
+Ghi:
+- Socket
+- Chipset
+- RAM slots
+- PCIe
+- M.2
+- SATA
+- USB
+- LAN
+- Audio
+- BIOS
