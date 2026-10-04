@@ -1,62 +1,56 @@
-# VGA – Graphics Card Knowledge Base
+# VGA — Graphics Card / GPU
 
-> Tài liệu kiến thức về VGA / GPU, bao gồm tổng quan, khả năng tương thích, driver, kiểm tra và xử lý sự cố.
->
-> A technical knowledge base covering VGA / GPU fundamentals, compatibility, drivers, testing, and troubleshooting.
+> **Tiếng Việt:** Tài liệu kiến thức về VGA, GPU, khả năng tương thích, driver, kiểm tra và xử lý sự cố.  
+> **English:** A knowledge base covering graphics cards, GPUs, compatibility, drivers, testing, and troubleshooting.
 
 ---
 
-## 🇻🇳 Tiếng Việt
+## 1. Giới thiệu | Introduction
 
-### 1. Giới thiệu
+### 🇻🇳 Tiếng Việt
 
-**VGA (Video Graphics Adapter)** hay **Graphics Card / GPU** là thành phần chịu trách nhiệm xử lý và xuất hình ảnh từ máy tính đến màn hình.
+**VGA (Video Graphics Adapter/Card)** là thiết bị phần cứng chịu trách nhiệm xử lý và xuất hình ảnh ra màn hình.
 
-VGA có thể là:
+Trong máy tính hiện đại, VGA thường được gọi là **Graphics Card**, **Graphics Processing Unit (GPU)** hoặc **Discrete GPU (dGPU)** khi nói đến card đồ họa rời.
 
-- **Integrated Graphics (iGPU)** – GPU tích hợp trong CPU hoặc SoC.
-- **Dedicated Graphics Card (dGPU)** – card đồ họa rời.
-- **Discrete GPU** – GPU độc lập được sử dụng trên card đồ họa.
+VGA có thể được sử dụng cho:
 
-VGA được sử dụng trong:
-
-- Hiển thị hình ảnh.
+- Xuất hình ảnh ra màn hình.
 - Chơi game.
-- Đồ họa 2D/3D.
-- Thiết kế CAD.
-- Video editing.
-- Rendering.
-- AI / Machine Learning.
-- GPGPU / Compute.
+- Thiết kế đồ họa.
+- Chỉnh sửa video.
+- Render 3D.
+- CAD/3D modeling.
+- AI/Machine Learning.
+- Tăng tốc các ứng dụng sử dụng GPU.
 - Multi-monitor.
-- Một số hệ thống workstation và server.
+- Giải mã và mã hóa video.
+
+### 🇬🇧 English
+
+A **VGA (Video Graphics Adapter/Card)** is a hardware component responsible for processing and outputting visual information to a display.
+
+Modern computers commonly use the terms **Graphics Card**, **Graphics Processing Unit (GPU)**, and **Discrete GPU (dGPU)**.
+
+A graphics card can be used for:
+
+- Display output.
+- Gaming.
+- Graphic design.
+- Video editing.
+- 3D rendering.
+- CAD/3D modeling.
+- AI/Machine Learning.
+- GPU-accelerated applications.
+- Multi-monitor configurations.
+- Video decoding and encoding.
 
 ---
 
-### 2. Mục đích của thư mục
-
-Thư mục này dùng để lưu trữ kiến thức về:
-
-- VGA architecture.
-- GPU specifications.
-- VRAM.
-- GPU interfaces.
-- Video outputs.
-- VGA compatibility.
-- VGA drivers.
-- VGA testing.
-- VGA troubleshooting.
-- GPU temperature.
-- GPU stability.
-- Display problems.
-
----
-
-### 3. Cấu trúc tài liệu
+# 2. Cấu trúc thư mục | Directory Structure
 
 ```text
 VGA/
-│
 ├── README.md
 ├── VGA-Compatibility.md
 ├── VGA-Driver.md
@@ -67,153 +61,229 @@ VGA/
 
 ---
 
-### 4. Nội dung từng file
+# 3. Nội dung tài liệu | Documentation
 
-| File | Nội dung |
-|---|---|
-| `VGA-Overview.md` | Kiến thức tổng quan về VGA/GPU |
-| `VGA-Compatibility.md` | Kiểm tra VGA có tương thích với hệ thống hay không |
-| `VGA-Driver.md` | Driver, cài đặt, cập nhật và xử lý lỗi driver |
-| `VGA-Testing.md` | Quy trình kiểm tra VGA |
-| `VGA-Troubleshooting.md` | Chẩn đoán và xử lý lỗi VGA |
-| `README.md` | Tổng quan thư mục VGA |
-
----
-
-### 5. Các thành phần cần kiểm tra khi lắp VGA
-
-Khi lắp VGA rời, cần kiểm tra:
-
-- Mainboard.
-- PCIe slot.
-- CPU.
-- PSU.
-- PCIe power connector.
-- Case clearance.
-- Display cable.
-- Monitor.
-- Driver.
-- BIOS/UEFI.
-- Operating System.
-- Airflow.
-- GPU temperature.
+| File | Tiếng Việt | English |
+|---|---|---|
+| `VGA-Overview.md` | Tổng quan VGA/GPU | VGA/GPU Overview |
+| `VGA-Compatibility.md` | Kiểm tra tương thích | VGA Compatibility |
+| `VGA-Driver.md` | Driver VGA | VGA Drivers |
+| `VGA-Testing.md` | Kiểm tra VGA | VGA Testing |
+| `VGA-Troubleshooting.md` | Xử lý sự cố | VGA Troubleshooting |
 
 ---
 
-### 6. Quy trình kiểm tra VGA cơ bản
+# 4. Kiến thức cần nắm | Key Knowledge
+
+### 🇻🇳 Tiếng Việt
+
+Khi làm việc với VGA cần hiểu:
+
+1. GPU
+2. VRAM
+3. GPU architecture
+4. GPU clock
+5. VRAM clock
+6. Memory bus
+7. Memory bandwidth
+8. CUDA / Stream Processors
+9. Ray Tracing
+10. Tensor Cores
+11. Video encoder/decoder
+12. PCIe
+13. DisplayPort
+14. HDMI
+15. DVI
+16. VGA connector
+17. Power connectors
+18. PSU requirements
+19. Driver
+20. Temperature
+21. GPU utilization
+22. VRAM utilization
+23. Benchmark
+24. Stress test
+25. Artifact
+26. Thermal throttling
+
+### 🇬🇧 English
+
+When working with graphics cards, you should understand:
+
+1. GPU
+2. VRAM
+3. GPU architecture
+4. GPU clock
+5. VRAM clock
+6. Memory bus
+7. Memory bandwidth
+8. CUDA / Stream Processors
+9. Ray Tracing
+10. Tensor Cores
+11. Video encoder/decoder
+12. PCIe
+13. DisplayPort
+14. HDMI
+15. DVI
+16. VGA connector
+17. Power connectors
+18. PSU requirements
+19. Drivers
+20. Temperature
+21. GPU utilization
+22. VRAM utilization
+23. Benchmarking
+24. Stress testing
+25. Artifacts
+26. Thermal throttling
+
+---
+
+# 5. Quy trình làm việc với VGA | VGA Workflow
 
 ```text
-Physical Inspection
-        ↓
-Check PCIe Slot
-        ↓
-Check PSU
-        ↓
-Check PCIe Power
-        ↓
-Install VGA
-        ↓
-Connect Display
-        ↓
-Boot System
-        ↓
+Identify GPU
+     ↓
+Check Compatibility
+     ↓
+Install Hardware
+     ↓
+Connect Power / Display
+     ↓
 Install Driver
-        ↓
-Check Device Manager
-        ↓
-Monitor Temperature
-        ↓
-Run Stability Test
-        ↓
-Check Performance
+     ↓
+Verify Device
+     ↓
+Test Temperature
+     ↓
+Test Stability
+     ↓
+Benchmark
+     ↓
+Document Results
+```
+
+### 🇻🇳 Tiếng Việt
+
+Quy trình đề xuất:
+
+1. Xác định model VGA.
+2. Kiểm tra khả năng tương thích.
+3. Lắp VGA.
+4. Kết nối nguồn phụ nếu cần.
+5. Kết nối màn hình.
+6. Cài driver.
+7. Kiểm tra Device Manager.
+8. Kiểm tra GPU-Z/HWiNFO.
+9. Kiểm tra nhiệt độ.
+10. Stress test.
+11. Benchmark.
+12. Ghi nhận kết quả.
+
+### 🇬🇧 English
+
+Recommended workflow:
+
+1. Identify the GPU model.
+2. Check compatibility.
+3. Install the graphics card.
+4. Connect auxiliary power if required.
+5. Connect the display.
+6. Install the driver.
+7. Verify the device in Device Manager.
+8. Check the GPU using GPU-Z/HWiNFO.
+9. Check temperatures.
+10. Perform a stress test.
+11. Run benchmarks.
+12. Document the results.
+
+---
+
+# 6. Công cụ thường dùng | Common Tools
+
+| Tool | Purpose |
+|---|---|
+| Device Manager | Kiểm tra thiết bị / Device detection |
+| GPU-Z | GPU information |
+| HWiNFO | Hardware monitoring |
+| MSI Afterburner | Monitoring / GPU control |
+| NVIDIA App | NVIDIA driver management |
+| AMD Software: Adrenalin Edition | AMD driver management |
+| Intel Graphics Software | Intel graphics management |
+| FurMark | GPU stress testing |
+| 3DMark | Benchmark |
+| Unigine Heaven | GPU benchmark |
+| OCCT | Stability testing |
+| Windows Event Viewer | Error investigation |
+
+---
+
+# 7. Mục tiêu học tập | Learning Objectives
+
+### 🇻🇳
+
+Sau khi hoàn thành tài liệu này, người học có thể:
+
+- Nhận diện VGA.
+- Đọc thông số VGA.
+- Kiểm tra VGA có tương thích với mainboard/PSU/case không.
+- Cài đặt driver.
+- Kiểm tra tình trạng VGA.
+- Benchmark VGA.
+- Stress test VGA.
+- Nhận biết artifact.
+- Kiểm tra nhiệt độ.
+- Xử lý lỗi không nhận VGA.
+- Xử lý lỗi màn hình đen.
+- Xử lý lỗi driver.
+- Ghi log quá trình kiểm tra.
+
+### 🇬🇧
+
+After completing this documentation, you should be able to:
+
+- Identify graphics cards.
+- Read GPU specifications.
+- Check GPU compatibility with the motherboard, PSU, and case.
+- Install GPU drivers.
+- Verify GPU health.
+- Benchmark a GPU.
+- Stress-test a GPU.
+- Identify graphical artifacts.
+- Monitor GPU temperature.
+- Troubleshoot GPU detection problems.
+- Troubleshoot black-screen problems.
+- Troubleshoot driver issues.
+- Document testing results.
+
+---
+
+# 8. Related Documentation
+
+```text
+Hardware
+├── PC
+├── Laptop
+├── CPU
+├── RAM
+├── SSD-HDD
+├── VGA
+├── PSU
+└── Mainboard
+```
+
+VGA có liên quan trực tiếp đến:
+
+- CPU
+- Mainboard
+- RAM
+- PSU
+- SSD/HDD
+- Monitor
+- Windows
+- Drivers
 ```
 
 ---
 
-### 7. Checklist nhanh
-
-#### Hardware
-
-- [ ] VGA được lắp đúng PCIe slot.
-- [ ] VGA được cố định chắc chắn.
-- [ ] PCIe power được cắm đầy đủ.
-- [ ] PSU đủ công suất.
-- [ ] PSU có đầu cấp nguồn phù hợp.
-- [ ] GPU không bị hư hỏng vật lý.
-- [ ] Fan GPU hoạt động bình thường.
-- [ ] Không có dấu hiệu cháy hoặc oxy hóa.
-
-#### Software
-
-- [ ] Windows nhận VGA.
-- [ ] Driver đã được cài.
-- [ ] Không có lỗi trong Device Manager.
-- [ ] GPU được nhận đúng model.
-- [ ] Driver đúng phiên bản.
-- [ ] Không xảy ra crash khi tải GPU.
-
-#### Testing
-
-- [ ] Display output OK.
-- [ ] VRAM test OK.
-- [ ] GPU stress test OK.
-- [ ] Temperature OK.
-- [ ] Fan OK.
-- [ ] Performance ổn định.
-
----
-
-## 🇬🇧 English
-
-### 1. Introduction
-
-A **VGA (Video Graphics Adapter)** or **Graphics Card / GPU** is a component responsible for processing and outputting visual information from a computer to a display.
-
-Graphics processing can be provided by:
-
-- Integrated Graphics (iGPU).
-- Dedicated Graphics Card (dGPU).
-- Discrete GPU.
-
-Common use cases include:
-
-- Display output.
-- Gaming.
-- 2D/3D graphics.
-- CAD.
-- Video editing.
-- Rendering.
-- AI / Machine Learning.
-- GPGPU / Compute.
-- Multi-monitor setups.
-- Workstations.
-
----
-
-### 2. Purpose
-
-This directory documents:
-
-- GPU fundamentals.
-- VGA specifications.
-- VRAM.
-- PCIe interface.
-- Video outputs.
-- Compatibility.
-- Drivers.
-- Testing.
-- Troubleshooting.
-- Temperature monitoring.
-- Stability testing.
-
----
-
-### 3. Basic VGA Validation Workflow
-
-```text
-Physical Inspection
-        ↓
-PCIe Slot Check
-        ↓
-PSU Check
-        ↓
+# 2. `VGA-Overview.md`
