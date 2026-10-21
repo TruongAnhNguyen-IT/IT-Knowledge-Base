@@ -260,9 +260,6 @@ Trước khi tạo, xóa, định dạng, thu nhỏ, mở rộng hoặc chuyển
 
 Nếu chưa xác minh được bất kỳ yêu cầu an toàn nào, hãy dừng lại và kiểm tra trước khi thay đổi phân vùng.
 
-## 11. Troubleshooting – Xử lý sự cố
-
-
 ## 11. Troubleshooting – Xử lý sự cố phân vùng ổ đĩa
 
 | Issue – Sự cố | Possible Cause – Nguyên nhân có thể | Recommended Action – Hướng xử lý |
