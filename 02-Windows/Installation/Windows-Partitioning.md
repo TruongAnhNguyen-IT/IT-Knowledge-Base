@@ -189,24 +189,139 @@ Nếu không thể chọn Extend Volume, hãy kiểm tra bố cục ổ đĩa. K
 
 ## 10. Before Changing Partitions – Trước khi thay đổi phân vùng
 
-- [ ] Confirm the correct physical disk.
-- [ ] Record the existing partition layout.
-- [ ] Back up important data.
-- [ ] Check BitLocker status and prepare the recovery key.
-- [ ] Confirm the intended operation.
-- [ ] Ensure sufficient free space.
-- [ ] Avoid interrupting partition operations.
+Before creating, deleting, formatting, shrinking, extending, or converting partitions, complete the following safety checklist to reduce the risk of data loss and system failure.
+
+Trước khi tạo, xóa, định dạng, thu nhỏ, mở rộng hoặc chuyển đổi phân vùng, hãy hoàn thành danh sách kiểm tra an toàn sau để giảm nguy cơ mất dữ liệu và lỗi hệ thống.
+
+### 10.1 Pre-Operation Checklist – Danh sách kiểm tra trước khi thao tác
+
+- [ ] **Confirm the correct physical disk – Xác nhận đúng ổ đĩa vật lý.**
+  - Verify the disk number, model, capacity, and existing partitions.
+  - Kiểm tra số thứ tự ổ đĩa, model, dung lượng và các phân vùng hiện có.
+  - Do not identify a disk by its number alone.
+  - Không xác định ổ đĩa chỉ dựa vào số thứ tự.
+
+  ```powershell
+  Get-Disk | Select-Object Number, FriendlyName, PartitionStyle, Size
+  ```
+
+- [ ] **Record the existing partition layout – Ghi lại cấu trúc phân vùng hiện tại.**
+  - Record partition sizes, drive letters, file systems, and their purposes.
+  - Ghi lại dung lượng, ký tự ổ đĩa, hệ thống tệp và mục đích của từng phân vùng.
+  - Take screenshots of Disk Management before making changes.
+  - Chụp ảnh Disk Management trước khi thay đổi.
+
+- [ ] **Back up important data – Sao lưu dữ liệu quan trọng.**
+  - Back up important files to another physical drive or a trusted backup location.
+  - Sao lưu các tệp quan trọng sang ổ đĩa vật lý khác hoặc vị trí sao lưu đáng tin cậy.
+  - Verify that the backup is accessible and the important files are intact.
+  - Kiểm tra bản sao lưu để bảo đảm có thể truy cập và các tệp quan trọng vẫn nguyên vẹn.
+
+- [ ] **Check BitLocker status and prepare the recovery key – Kiểm tra BitLocker và chuẩn bị khóa khôi phục.**
+  - Check whether BitLocker or Device Encryption is enabled.
+  - Kiểm tra BitLocker hoặc Device Encryption có đang bật hay không.
+  - Ensure the recovery key is accessible and stored separately from the affected device.
+  - Bảo đảm có thể truy cập khóa khôi phục và lưu khóa ở nơi riêng biệt với thiết bị đang thao tác.
+
+  ```powershell
+  Get-BitLockerVolume
+  ```
+
+- [ ] **Confirm the intended operation – Xác nhận thao tác dự định thực hiện.**
+  - Confirm whether the task involves creating, deleting, formatting, shrinking, extending, or converting a partition.
+  - Xác định thao tác cần thực hiện là tạo, xóa, định dạng, thu nhỏ, mở rộng hay chuyển đổi phân vùng.
+  - Verify the target disk and partition before confirming any changes.
+  - Kiểm tra lại ổ đĩa và phân vùng mục tiêu trước khi xác nhận thay đổi.
+
+- [ ] **Ensure sufficient free space – Đảm bảo đủ dung lượng trống.**
+  - Check available space before shrinking or modifying a volume.
+  - Kiểm tra dung lượng còn trống trước khi thu nhỏ hoặc chỉnh sửa phân vùng.
+  - When extending a volume, verify that suitable unallocated space is available in the required location.
+  - Khi mở rộng phân vùng, xác minh có vùng chưa phân bổ phù hợp tại vị trí cần thiết.
+
+- [ ] **Avoid interrupting partition operations – Tránh làm gián đoạn thao tác phân vùng.**
+  - Ensure a stable power supply before starting.
+  - Bảo đảm nguồn điện ổn định trước khi bắt đầu.
+  - Do not force shutdown, restart, or disconnect the drive while an operation is in progress.
+  - Không tắt máy cưỡng bức, khởi động lại hoặc ngắt kết nối ổ đĩa khi thao tác đang diễn ra.
+  - Wait for the operation to complete before proceeding.
+  - Chờ thao tác hoàn tất trước khi tiếp tục.
+
+### 10.2 Safety Notes – Lưu ý an toàn
+
+- Never delete or format a partition if its purpose is unknown.
+- Không xóa hoặc định dạng phân vùng khi chưa biết rõ mục đích sử dụng.
+- Do not initialize or format a disk simply because Windows cannot read it; doing so may complicate data recovery.
+- Không khởi tạo hoặc định dạng ổ đĩa chỉ vì Windows không đọc được; việc này có thể khiến quá trình khôi phục dữ liệu phức tạp hơn.
+- If a disk shows signs of physical failure, prioritize data recovery and avoid unnecessary write operations.
+- Nếu ổ đĩa có dấu hiệu hư hỏng vật lý, hãy ưu tiên khôi phục dữ liệu và tránh các thao tác ghi không cần thiết.
+
+**Important – Quan trọng:** If any safety requirement cannot be verified, stop and investigate before changing partitions.
+
+Nếu chưa xác minh được bất kỳ yêu cầu an toàn nào, hãy dừng lại và kiểm tra trước khi thay đổi phân vùng.
 
 ## 11. Troubleshooting – Xử lý sự cố
 
-| Issue | Possible action |
-|---|---|
-| Disk is not visible | Check connections, firmware, and storage drivers. |
-| Volume has no drive letter | Check Disk Management and assign a letter if appropriate. |
-| Cannot shrink sufficiently | Check free space and immovable files. |
-| Cannot extend volume | Inspect adjacent unallocated space and disk type. |
-| Partition appears RAW | Stop writing to the volume and investigate recovery options. |
-| Disk reports errors | Check disk health and back up important data. |
+
+## 11. Troubleshooting – Xử lý sự cố phân vùng ổ đĩa
+
+| Issue – Sự cố | Possible Cause – Nguyên nhân có thể | Recommended Action – Hướng xử lý |
+|---|---|---|
+| Disk is not visible – Không thấy ổ đĩa | Loose connection, disabled storage controller, missing driver, or hardware failure. / Kết nối lỏng, bộ điều khiển lưu trữ bị tắt, thiếu driver hoặc lỗi phần cứng. | Check SATA/power cables or SSD installation, inspect BIOS/UEFI, and install the appropriate storage driver. / Kiểm tra cáp SATA/nguồn hoặc vị trí lắp SSD, kiểm tra BIOS/UEFI và cài driver lưu trữ phù hợp. |
+| Volume has no drive letter – Phân vùng không có ký tự ổ đĩa | Drive letter was removed, is unavailable, or the volume is not mounted. / Ký tự ổ đĩa bị gỡ, không khả dụng hoặc volume chưa được gắn kết. | Open Disk Management, inspect the volume, and assign an available drive letter if appropriate. / Mở Disk Management, kiểm tra volume và gán ký tự còn trống nếu phù hợp. |
+| Cannot shrink sufficiently – Không thể thu nhỏ phân vùng theo dung lượng mong muốn | Insufficient free space or unmovable files near the end of the volume. / Không đủ dung lượng trống hoặc có tệp không thể di chuyển gần cuối phân vùng. | Check available free space, remove unnecessary files, and retry. Back up important data before making changes. / Kiểm tra dung lượng trống, xóa tệp không cần thiết và thử lại. Sao lưu dữ liệu quan trọng trước khi thay đổi. |
+| Cannot extend volume – Không thể mở rộng phân vùng | No suitable unallocated space immediately to the right of the volume, or unsupported disk configuration. / Không có vùng Unallocated phù hợp nằm ngay bên phải phân vùng hoặc cấu hình ổ đĩa không được hỗ trợ. | Inspect the disk layout in Disk Management. Plan a supported partition change or use an appropriate tool after backing up data. / Kiểm tra bố cục ổ đĩa trong Disk Management. Lập phương án thay đổi phân vùng được hỗ trợ sau khi sao lưu dữ liệu. |
+| Partition appears RAW – Phân vùng hiển thị RAW | File system is corrupted, unrecognized, or inaccessible. / Hệ thống tệp bị hỏng, không được nhận diện hoặc không thể truy cập. | Stop writing to the disk. Do not format the partition if data recovery is required. Assess recovery options or consult a data recovery specialist. / Ngừng ghi dữ liệu lên ổ đĩa. Không format nếu cần khôi phục dữ liệu. Đánh giá phương án cứu dữ liệu hoặc liên hệ chuyên gia. |
+| Disk reports errors – Ổ đĩa báo lỗi | File system errors, bad sectors, device degradation, or connection problems. / Lỗi hệ thống tệp, sector lỗi, ổ đĩa xuống cấp hoặc sự cố kết nối. | Back up important data immediately if the disk is accessible. Check the manufacturer's drive health tools and investigate hardware or file system errors. / Sao lưu dữ liệu quan trọng ngay nếu còn truy cập được. Kiểm tra công cụ đánh giá tình trạng ổ đĩa của nhà sản xuất và xác định lỗi phần cứng hoặc hệ thống tệp. |
+
+### Additional Diagnostic Commands – Lệnh kiểm tra bổ sung
+
+#### 1. List disks – Liệt kê ổ đĩa
+
+Run PowerShell as Administrator:
+
+```powershell
+Get-Disk |
+    Select-Object Number, FriendlyName, OperationalStatus, HealthStatus, PartitionStyle, Size
+```
+
+Purpose: Inspect detected disks, their reported status, partition style, and capacity.
+
+Mục đích: Kiểm tra các ổ đĩa được nhận diện, trạng thái do hệ thống báo cáo, kiểu phân vùng và dung lượng.
+
+Note: `HealthStatus` is not a definitive hardware diagnostic. Some devices and storage controllers may not provide complete health information.
+
+Lưu ý: `HealthStatus` không phải kết quả chẩn đoán phần cứng tuyệt đối. Một số thiết bị hoặc bộ điều khiển lưu trữ không cung cấp đầy đủ thông tin tình trạng.
+
+#### 2. List volumes – Liệt kê volume
+
+```powershell
+Get-Volume |
+    Select-Object DriveLetter, FileSystem, FileSystemLabel, HealthStatus, Size, SizeRemaining
+```
+
+Purpose: Review drive letters, file systems, labels, and available space.
+
+Mục đích: Kiểm tra ký tự ổ đĩa, hệ thống tệp, nhãn volume và dung lượng còn trống.
+
+#### 3. Check a file system – Kiểm tra hệ thống tệp
+
+```cmd
+chkdsk C: /scan
+```
+
+Purpose: Scan the supported file system on drive C: for errors without requesting an offline repair.
+
+Mục đích: Quét lỗi hệ thống tệp được hỗ trợ trên ổ C: mà không yêu cầu sửa chữa ngoại tuyến.
+
+Replace `C:` with the correct volume letter.
+
+Thay `C:` bằng ký tự volume phù hợp.
+
+**Warning – Cảnh báo:** If a drive may be physically failing or contains irreplaceable data, prioritize data recovery and backup before running repair operations. Do not format or initialize a disk simply because Windows cannot read it.
+
+Nếu nghi ngờ ổ đĩa hỏng vật lý hoặc chứa dữ liệu không thể thay thế, hãy ưu tiên cứu dữ liệu và sao lưu trước khi sửa chữa. Không format hoặc initialize ổ đĩa chỉ vì Windows không đọc được.
+
 
 ## 12. References – Tài liệu tham khảo
 
