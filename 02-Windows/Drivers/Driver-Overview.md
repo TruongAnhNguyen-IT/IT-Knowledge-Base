@@ -1,636 +1,162 @@
-# Driver Overview
 
-## 🇻🇳 TIẾNG VIỆT
+# Driver Overview – Tổng quan về Driver
 
-## 1. Driver là gì?
+## 1. Introduction – Giới thiệu
 
-**Driver** là phần mềm trung gian cho phép hệ điều hành Windows giao tiếp và điều khiển một thiết bị phần cứng.
+**Tiếng Việt**
 
-Có thể hình dung:
+Driver (trình điều khiển thiết bị) là phần mềm trung gian giúp hệ điều hành giao tiếp với phần cứng. Driver cho phép Windows nhận diện, quản lý và sử dụng các thiết bị như card mạng, card đồ họa, máy in, âm thanh và chipset.
 
-```text
-Application
-     ↓
-Windows
-     ↓
-Driver
-     ↓
-Hardware
+**English**
+
+A device driver is software that allows an operating system to communicate with hardware. It enables Windows to recognize, manage, and use devices such as network adapters, graphics cards, printers, audio devices, and chipsets.
+
+## 2. Functions of Drivers – Chức năng
+
+- Nhận diện thiết bị phần cứng.
+- Cho phép hệ điều hành điều khiển thiết bị.
+- Cung cấp các chức năng phù hợp với phần cứng.
+- Cải thiện tính ổn định, hiệu năng và khả năng tương thích.
+- Khắc phục lỗi thiết bị thông qua các phiên bản driver mới.
+
+English:
+- Identify hardware devices.
+- Allow the operating system to control hardware.
+- Provide hardware-specific functionality.
+- Improve stability, performance, and compatibility.
+- Fix device issues through driver updates.
+
+## 3. Common Driver Types – Các loại Driver phổ biến
+
+| Driver | Chức năng |
+|---|---|
+| Chipset | Hỗ trợ giao tiếp giữa CPU, chipset và các thiết bị trên mainboard. |
+| Graphics / VGA | Điều khiển GPU và các chức năng hiển thị. |
+| Network / LAN | Hỗ trợ kết nối mạng Ethernet. |
+| Wireless / Wi-Fi | Hỗ trợ kết nối mạng không dây. |
+| Bluetooth | Quản lý kết nối Bluetooth. |
+| Audio | Điều khiển âm thanh đầu vào và đầu ra. |
+| Storage | Hỗ trợ bộ điều khiển và thiết bị lưu trữ. |
+| Printer | Cho phép Windows giao tiếp với máy in. |
+| Touchpad | Hỗ trợ thao tác trên bàn di chuột laptop. |
+| USB | Hỗ trợ bộ điều khiển và thiết bị USB. |
+
+English: Common driver categories include chipset, graphics, network, wireless, Bluetooth, audio, storage, printer, touchpad, and USB drivers.
+
+## 4. Driver vs. Firmware vs. Application
+
+| Component | Explanation |
+|---|---|
+| Driver | Software that enables the OS to communicate with hardware. |
+| Firmware | Low-level software stored in a hardware device. |
+| Application | Software that performs tasks for the user. |
+
+Tiếng Việt:
+- Driver: Phần mềm giúp hệ điều hành giao tiếp với phần cứng.
+- Firmware: Phần mềm cấp thấp được lưu trong thiết bị.
+- Application: Phần mềm phục vụ nhu cầu sử dụng của người dùng.
+
+## 5. How to Check Drivers – Cách kiểm tra Driver
+
+### Method 1: Device Manager
+
+1. Press `Win + X`.
+2. Select **Device Manager**.
+3. Expand the relevant device category.
+4. Right-click the device and select **Properties**.
+5. Open the **Driver** tab.
+6. Check the provider, date, version, and available actions.
+
+Tiếng Việt:
+
+1. Nhấn `Win + X`.
+2. Chọn **Device Manager (Trình quản lý Thiết bị)**.
+3. Mở nhóm thiết bị cần kiểm tra.
+4. Nhấp phải thiết bị và chọn **Properties**.
+5. Chọn tab **Driver**.
+6. Kiểm tra nhà cung cấp, ngày phát hành, phiên bản và các tùy chọn có sẵn.
+
+### Method 2: System Information
+
+1. Press `Win + R`.
+2. Enter `msinfo32`.
+3. Review hardware resources and system components.
+
+Lưu ý: `msinfo32` cung cấp thông tin phần cứng và hệ thống; Device Manager thường thuận tiện hơn để kiểm tra thuộc tính của từng driver.
+
+### Method 3: PowerShell
+
+Run PowerShell as Administrator:
+
+```powershell
+Get-CimInstance Win32_PnPSignedDriver |
+    Select-Object DeviceName, DriverVersion, DriverDate, DriverProviderName
 ```
 
-Ví dụ:
+Lệnh hiển thị thông tin về các driver thiết bị Plug and Play đã ký mà Windows truy vấn được.
 
-```text
-Windows
-   ↓
-Network Driver
-   ↓
-Intel / Realtek Network Adapter
-   ↓
-Network
-```
+English: This command retrieves available Plug and Play driver information, including device name, version, date, and provider.
 
-Nếu driver không tồn tại hoặc không tương thích, Windows có thể không sử dụng được đầy đủ chức năng của thiết bị.
+## 6. Device Manager Status – Trạng thái thiết bị
 
----
+| Indicator | Meaning |
+|---|---|
+| No warning icon | No obvious Device Manager warning is shown. |
+| Yellow warning icon | A device or driver problem may exist. |
+| Unknown device | Windows cannot identify the device correctly. |
+| Down-arrow icon | The device may be disabled. |
 
-# 2. Driver có vai trò gì?
+Tiếng Việt:
+- Không có biểu tượng cảnh báo: Không thấy cảnh báo rõ ràng trong Device Manager.
+- Dấu chấm than vàng: Có thể thiết bị hoặc driver đang gặp sự cố.
+- Unknown device: Windows chưa nhận diện được thiết bị.
+- Biểu tượng mũi tên xuống: Thiết bị có thể đang bị vô hiệu hóa.
 
-Driver giúp Windows:
+Không có biểu tượng cảnh báo không đồng nghĩa driver chắc chắn hoạt động hoàn hảo.
 
-- Nhận diện hardware.
-- Giao tiếp với hardware.
-- Điều khiển hardware.
-- Cấu hình hardware.
-- Cung cấp các chức năng nâng cao.
-- Quản lý tài nguyên thiết bị.
-- Xử lý giao tiếp giữa OS và thiết bị.
+## 7. Driver Sources – Nguồn tải Driver
 
-Ví dụ:
+Ưu tiên theo thứ tự:
 
-### VGA
+1. Windows Update.
+2. Trang hỗ trợ chính thức của nhà sản xuất laptop hoặc máy tính.
+3. Trang hỗ trợ chính thức của nhà sản xuất mainboard hoặc thiết bị.
+4. Công cụ cập nhật chính thức của nhà sản xuất.
+5. Microsoft Update Catalog khi phù hợp.
 
-```text
-Windows
-↓
-NVIDIA / AMD / Intel Driver
-↓
-GPU
-```
+Avoid unofficial driver-download websites and unknown driver-updater utilities.
 
-### Audio
+Tiếng Việt: Không tải driver từ website không rõ nguồn gốc hoặc cài các công cụ cập nhật driver không đáng tin cậy.
 
-```text
-Windows
-↓
-Audio Driver
-↓
-Audio Controller
-↓
-Speaker / Headphone
-```
+## 8. Best Practices – Thực hành tốt
 
-### Network
+- Xác định đúng model thiết bị và phiên bản Windows.
+- Kiểm tra kiến trúc hệ điều hành, chẳng hạn x64 hoặc ARM64.
+- Ưu tiên driver có chữ ký số hợp lệ.
+- Tạo điểm khôi phục khi phù hợp trước khi thay đổi lớn.
+- Sao lưu driver quan trọng khi cần thiết.
+- Chỉ cập nhật khi có lý do rõ ràng.
+- Kiểm tra thiết bị sau khi cài đặt.
+- Ghi lại phiên bản cũ và phiên bản mới.
 
-```text
-Windows
-↓
-LAN / Wi-Fi Driver
-↓
-Network Adapter
-↓
-Network
-```
+English:
+- Verify the device model and Windows version.
+- Check the operating system architecture.
+- Prefer properly signed drivers.
+- Create a restore point when appropriate.
+- Back up important drivers when needed.
+- Update for a clear reason.
+- Test the device after installation.
+- Record the old and new versions.
 
----
+## 9. References – Tài liệu tham khảo
 
-# 3. Các loại driver phổ biến
+- Microsoft Learn: https://learn.microsoft.com/
+- Microsoft Support: https://support.microsoft.com/
+- Microsoft Update Catalog: https://www.catalog.update.microsoft.com/
 
-## 3.1 Chipset Driver
+## 10. Disclaimer – Lưu ý
 
-Quản lý và hỗ trợ giao tiếp giữa:
+Driver availability and installation procedures vary by hardware model and Windows version. Always verify compatibility with the device manufacturer.
 
-- CPU.
-- Chipset.
-- PCIe.
-- USB.
-- Storage.
-- Motherboard controllers.
-
----
-
-## 3.2 Graphics Driver
-
-Dùng cho:
-
-- Integrated GPU.
-- Dedicated GPU.
-
-Ví dụ:
-
-- Intel Graphics.
-- NVIDIA GeForce.
-- AMD Radeon.
-
----
-
-## 3.3 Network Driver
-
-Bao gồm:
-
-- Ethernet.
-- Wi-Fi.
-- Bluetooth.
-
-Nhà sản xuất phổ biến:
-
-- Intel.
-- Realtek.
-- MediaTek.
-- Broadcom.
-- Qualcomm.
-
----
-
-## 3.4 Audio Driver
-
-Dùng cho:
-
-- Internal audio.
-- Speaker.
-- Headphone.
-- Microphone.
-- HDMI/DisplayPort audio.
-
-Ví dụ:
-
-- Realtek Audio.
-- Intel Audio.
-- AMD Audio.
-- NVIDIA High Definition Audio.
-
----
-
-## 3.5 Storage Driver
-
-Có thể liên quan đến:
-
-- SATA controller.
-- NVMe.
-- RAID controller.
-- Storage controller.
-
----
-
-## 3.6 USB Driver
-
-Windows thường có sẵn nhiều USB driver, nhưng một số thiết bị cần driver riêng.
-
-Ví dụ:
-
-- USB controller.
-- USB-to-Serial.
-- USB printer.
-- USB device.
-
----
-
-## 3.7 Printer Driver
-
-Cho phép Windows giao tiếp với:
-
-- Laser printer.
-- Inkjet printer.
-- Label printer.
-- Barcode printer.
-- POS printer.
-
----
-
-## 3.8 Bluetooth Driver
-
-Điều khiển Bluetooth adapter và hỗ trợ:
-
-- Keyboard.
-- Mouse.
-- Headset.
-- Smartphone.
-- Other Bluetooth devices.
-
----
-
-# 4. Windows Driver Model
-
-Windows sử dụng các mô hình driver để giao tiếp với hardware.
-
-Một số khái niệm:
-
-- WDM – Windows Driver Model.
-- WDF – Windows Driver Framework.
-- KMDF – Kernel-Mode Driver Framework.
-- UMDF – User-Mode Driver Framework.
-
-Không phải IT Support cần viết driver, nhưng cần hiểu các khái niệm này khi troubleshooting.
-
----
-
-# 5. Hardware ID
-
-Windows có thể xác định thiết bị thông qua Hardware ID.
-
-Ví dụ:
-
-```text
-PCI\VEN_8086&DEV_XXXX
-```
-
-Trong đó:
-
-```text
-VEN = Vendor
-DEV = Device
-```
-
-Hardware ID rất hữu ích khi:
-
-- Unknown Device.
-- Không biết model hardware.
-- Không tìm được driver.
-- Driver tự động không hoạt động.
-
-Có thể xem tại:
-
-```text
-Device Manager
-→ Device
-→ Properties
-→ Details
-→ Hardware Ids
-```
-
----
-
-# 6. Device Manager
-
-Device Manager là công cụ quan trọng để quản lý driver.
-
-Mở bằng:
-
-```text
-Win + X
-→ Device Manager
-```
-
-Hoặc:
-
-```text
-Win + R
-→ devmgmt.msc
-```
-
-Có thể kiểm tra:
-
-- Device name.
-- Driver provider.
-- Driver version.
-- Driver date.
-- Device status.
-- Hardware ID.
-- Driver files.
-
----
-
-# 7. Driver Store
-
-Windows lưu driver packages trong Driver Store.
-
-Vị trí thường gặp:
-
-```text
-C:\Windows\System32\DriverStore
-```
-
-Không nên tự ý xóa file trong thư mục này.
-
-Windows sử dụng Driver Store để:
-
-- Lưu driver package.
-- Cài driver.
-- Reinstall driver.
-- Manage driver packages.
-
----
-
-# 8. Driver Package
-
-Một driver package có thể bao gồm:
-
-- `.inf`
-- `.sys`
-- `.cat`
-- `.dll`
-- Supporting files
-
-### `.inf`
-
-Chứa thông tin hướng dẫn cài đặt driver.
-
-### `.sys`
-
-Có thể chứa driver binary.
-
-### `.cat`
-
-Chứa thông tin chữ ký và tính toàn vẹn của package.
-
----
-
-# 9. Signed Driver
-
-Windows có cơ chế kiểm tra chữ ký driver.
-
-Driver được ký giúp xác minh:
-
-- Nguồn driver.
-- Tính toàn vẹn.
-- Khả năng tương thích với Windows.
-
-Không nên cài driver không rõ nguồn gốc.
-
----
-
-# 10. Microsoft Driver và OEM Driver
-
-## Microsoft Driver
-
-Driver được Microsoft phân phối hoặc tích hợp trong Windows.
-
-Ưu điểm:
-
-- Dễ cài.
-- Tương thích tốt với Windows.
-- Có thể cài tự động.
-
-## OEM Driver
-
-Driver do nhà sản xuất thiết bị cung cấp.
-
-Ví dụ:
-
-- Dell.
-- HP.
-- Lenovo.
-- ASUS.
-- Acer.
-
-OEM driver đôi khi được tùy chỉnh cho model cụ thể.
-
----
-
-# 11. Windows Update Driver
-
-Windows Update có thể tự động cung cấp driver.
-
-Ưu điểm:
-
-- Dễ sử dụng.
-- Tự động.
-- Phù hợp cho nhiều thiết bị.
-
-Nhược điểm:
-
-- Có thể không phải phiên bản mới nhất.
-- Một số driver chuyên dụng cần tải trực tiếp từ vendor.
-
----
-
-# 12. Driver Version
-
-Thông tin driver thường gồm:
-
-```text
-Driver Provider
-Driver Date
-Driver Version
-Digital Signer
-```
-
-Ví dụ:
-
-```text
-Provider:
-Intel
-
-Version:
-31.x.x.x
-
-Date:
-2026-xx-xx
-```
-
----
-
-# 13. Khi nào cần kiểm tra Driver?
-
-Cần kiểm tra driver khi:
-
-- Cài Windows mới.
-- Thay hardware.
-- Hardware không nhận.
-- Device Manager có dấu `!`.
-- Mất mạng.
-- Mất âm thanh.
-- Màn hình lỗi.
-- GPU crash.
-- Printer không hoạt động.
-- Bluetooth không hoạt động.
-- USB device lỗi.
-
----
-
-# 14. Nguyên tắc quản lý Driver
-
-Nên:
-
-- Download từ nguồn chính thức.
-- Xác định đúng model.
-- Kiểm tra Windows version.
-- Kiểm tra architecture.
-- Backup driver quan trọng.
-- Ghi lại version.
-- Test sau khi cài.
-
-Không nên:
-
-- Tải driver từ website không rõ nguồn.
-- Cài driver không đúng model.
-- Dùng nhiều driver updater không cần thiết.
-- Xóa Driver Store thủ công.
-
----
-
-## Driver Management Checklist
-
-```text
-[ ] Identify hardware
-[ ] Identify Hardware ID
-[ ] Identify Windows version
-[ ] Check architecture
-[ ] Download correct driver
-[ ] Verify source
-[ ] Install
-[ ] Restart if required
-[ ] Check Device Manager
-[ ] Test hardware
-[ ] Record driver version
-```
-
----
-
-# 🇬🇧 ENGLISH
-
-# 1. What is a Driver?
-
-A **driver** is software that allows Windows to communicate with and control hardware.
-
-Basic architecture:
-
-```text
-Application
-     ↓
-Windows
-     ↓
-Driver
-     ↓
-Hardware
-```
-
----
-
-# 2. Driver Functions
-
-A driver allows Windows to:
-
-- Detect hardware.
-- Communicate with hardware.
-- Control hardware.
-- Configure hardware.
-- Provide advanced functions.
-- Manage device resources.
-
----
-
-# 3. Common Driver Types
-
-Common Windows drivers include:
-
-- Chipset drivers.
-- Graphics drivers.
-- Network drivers.
-- Audio drivers.
-- Storage drivers.
-- USB drivers.
-- Printer drivers.
-- Bluetooth drivers.
-
----
-
-# 4. Hardware ID
-
-Hardware IDs identify hardware devices.
-
-Example:
-
-```text
-PCI\VEN_8086&DEV_XXXX
-```
-
-Hardware IDs are useful when:
-
-- A device is unknown.
-- Automatic driver installation fails.
-- The exact hardware model is unknown.
-
-Location:
-
-```text
-Device Manager
-→ Device
-→ Properties
-→ Details
-→ Hardware Ids
-```
-
----
-
-# 5. Device Manager
-
-Open:
-
-```text
-Win + X
-→ Device Manager
-```
-
-or:
-
-```text
-Win + R
-→ devmgmt.msc
-```
-
-Device Manager can show:
-
-- Device name.
-- Driver provider.
-- Driver version.
-- Driver date.
-- Device status.
-- Hardware ID.
-
----
-
-# 6. Driver Store
-
-Windows stores driver packages in the Driver Store.
-
-Typical location:
-
-```text
-C:\Windows\System32\DriverStore
-```
-
-Do not manually delete files from this directory.
-
----
-
-# 7. Driver Package
-
-A driver package may contain:
-
-```text
-.inf
-.sys
-.cat
-.dll
-```
-
-The `.inf` file contains installation information, while `.sys` files may contain driver binaries.
-
----
-
-# 8. Driver Sources
-
-Common sources:
-
-- Microsoft.
-- Windows Update.
-- OEM manufacturer.
-- Hardware vendor.
-
-Preferred sources should be official and trusted.
-
----
-
-# 9. Driver Management Best Practices
-
-Always:
-
-- Identify the exact hardware.
-- Verify the Windows version.
-- Download from a trusted source.
-- Check driver compatibility.
-- Record driver versions.
-- Test after installation.
-- Maintain backups when appropriate.
-
-Avoid:
-
-- Unknown driver websites.
-- Incorrect drivers.
-- Unnecessary driver updater applications.
-- Manual deletion from Driver Store.
-
----
-
-# 2. `Driver-Installation.md`
+Khả năng hỗ trợ và quy trình cài đặt có thể khác nhau theo model phần cứng và phiên bản Windows. Luôn kiểm tra tính tương thích trước khi cài đặt.
