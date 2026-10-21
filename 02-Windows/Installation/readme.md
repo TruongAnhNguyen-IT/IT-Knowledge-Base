@@ -44,7 +44,7 @@ Topics include:
 | [Windows-USB-Installation.md](Windows-USB-Installation.md) | Tạo USB boot và chuẩn bị bộ cài. / Creating bootable installation media. |
 | [Windows-Partitioning.md](Windows-Partitioning.md) | Quản lý ổ đĩa, phân vùng và file system. / Disk and partition management. |
 | [Windows-UEFI-GPT.md](Windows-UEFI-GPT.md) | Cài đặt và kiểm tra UEFI/GPT. / UEFI/GPT installation and verification. |
-| [Windows-Legacy-BIOS-MBR.md](Windows-Legacy-BIOS-MBR.md) | Cài đặt và kiểm tra Legacy BIOS/MBR. / Legacy BIOS/MBR installation and verification. |
+| [Windows-Legacy-BIOS-MBR.md](Windows-Legacy-MBR.md) | Cài đặt và kiểm tra Legacy BIOS/MBR. / Legacy BIOS/MBR installation and verification. |
 | [Windows-Post-Installation.md](Windows-Post-Installation.md) | Cấu hình, cài driver và kiểm tra sau cài đặt. / Post-installation setup and testing. |
 | [Windows-Activation.md](Windows-Activation.md) | Kích hoạt và xử lý lỗi cấp phép Windows. / Windows activation and licensing troubleshooting. |
 
