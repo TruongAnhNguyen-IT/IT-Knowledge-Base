@@ -26,14 +26,14 @@ Software updates patch vulnerabilities, fix defects, and maintain compatibility.
 4. Kiểm tra dependency, tích hợp, plugin, macro và kết nối tới hệ thống nghiệp vụ.
 5. Chọn nhóm pilot và thời gian thay đổi.
 6. Thông báo người dùng và chuẩn bị hỗ trợ sau cập nhật.
-
+   
 1. Identify the app, current/target versions, and reason.
 2. Review release notes, known issues, reboot requirements, and support lifecycle.
 3. Confirm data/configuration backups and rollback capability.
 4. Check dependencies, integrations, plug-ins, macros, and business-system connectivity.
 5. Select a pilot group and change window.
 6. Notify users and prepare post-update support.
-
+   
 ## 4. Kiểm tra phiên bản / Check versions
 
 ```powershell
